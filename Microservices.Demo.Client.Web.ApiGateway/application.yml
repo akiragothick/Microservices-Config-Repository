@@ -84,6 +84,22 @@ Routes:
         AddHeadersToRequest:
             AgentLogin: Claims[http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier] > value[0] > |
     -
+        DownstreamPathTemplate: /api/report
+        DownstreamScheme: http
+        UpstreamPathTemplate: /api/report/get-report
+        ServiceName: Microservices.Demo.Report.API
+        UpstreamHttpMethod: 
+            - Get
+        AuthenticationOptions:
+            AuthenticationProviderKey: ApiSecurityAuthenticationScheme
+  #          AllowedScopes: 
+  #              -
+        RouteClaimsRequirement:
+            userType: SALESMAN      
+        DangerousAcceptAnyServerCertificateValidator: true
+        AddHeadersToRequest:
+            AgentLogin: Claims[http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier] > value[0] > |
+    -
         DownstreamPathTemplate: /api/Policies
         DownstreamScheme: http
         UpstreamPathTemplate: /api/Policies
